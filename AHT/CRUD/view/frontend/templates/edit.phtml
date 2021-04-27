@@ -1,0 +1,76 @@
+<?php
+    $value = $block->getEditRecord();
+?>
+<form action="/m240/crud/index/save" method="post">
+    <div class="form-group">
+        <label for="id">
+            <span>
+                <strong>
+                    <h4>
+                        Post ID
+                    </h4>
+                </strong>
+            </span>
+            <input type="text" id="id" name="post_id" readonly="true"
+                value="<?php echo (isset($value)) ? $value->getPostId() : "";?>" placeholder="Enter name of post...">
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label for="name">
+            <span>
+                <strong>
+                    <h4>
+                        Name
+                    </h4>
+                </strong>
+            </span>
+            <input type="text" id="name" name="name" value="<?php echo (isset($value)) ? $value->getName() : "";?>"
+                placeholder="Enter name of post...">
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label for="url">
+            <span>
+                <strong>
+                    <h4>
+                        URL Key
+                    </h4>
+                </strong>
+            </span>
+            <input type="text" value="<?php echo (isset($value)) ? $value->getUrlKey() : "";?>" id="url" name="url_key"
+                placeholder="Enter url-key of post...">
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="content">
+            <span>
+                <strong>
+                    <h4>
+                        Content
+                    </h4>
+                </strong>
+            </span>
+            <input type="text" value="<?php echo (isset($value)) ? $value->getPostContent() : "";?>" id="content"
+                name="post_content" placeholder="Enter content of post...">
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="tags">
+            <span>
+                <strong>
+                    <h4>
+                        Tags
+                    </h4>
+                </strong>
+            </span>
+            <input type="text" value="<?php echo (isset($value)) ? $value->getTags() : "";?>" id="tags" name="tags"
+                placeholder="Enter tags of post...">
+        </label>
+    </div>
+    <hr>
+    <div class="btn action primary">
+        <input type="submit" value="OK">
+    </div>
+</form>

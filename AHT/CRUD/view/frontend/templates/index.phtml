@@ -1,0 +1,59 @@
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    text-align: center;
+    margin: auto;
+}
+
+td,
+th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.post-id {
+    width: 2%
+}
+
+</style>
+
+<a class="action primary" href="<?php echo $block->getUrl('crud/index/insert'); ?>">Add Record</a>
+<hr>
+
+<table>
+    <tr>
+        <th class="post post-id">Id</th>
+        <th class="post post-name">Name</th>
+        <th class="post post-url">URL Key</th>
+        <th class="post post-content">Content</th>
+        <th class="post post-tags">Tags</th>
+        <th class="post post-created">Created At</th>
+        <th class="post post-updated">Updated At</th>
+        <th class="post post-action" colspan="2">Action</th>
+    </tr>
+
+    <?php
+        $count = 1;
+        $collection = $block->getResult();
+        foreach ($collection as $item) {
+    ?>
+    <tr>
+        <td><?php echo $count; ?></td>
+        <td><?php echo $item->getData('name'); ?></td>
+        <td><?php echo $item->getData('url_key'); ?></td>
+        <td><?php echo $item->getData('post_content'); ?></td>
+        <td><?php echo $item->getData('tags'); ?></td>
+        <td><?php echo $item->getData('created_at'); ?></td>
+        <td><?php echo $item->getData('updated_at'); ?></td>
+        <td><a href="<?php echo $block->getUrl('crud/index/edit') . 'id/' . $item->getData('post_id'); ?>"
+                class="action primary">Edit</a></td>
+        <td><a href="<?php echo $block->getUrl('crud/index/delete') . '?id=' . $item->getData('post_id'); ?>"
+                class="action primary">Delete</a></td>
+    </tr>
+    <?php $count++;}?>
+</table>
